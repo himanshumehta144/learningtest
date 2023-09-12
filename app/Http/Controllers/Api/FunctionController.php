@@ -36,10 +36,6 @@ class FunctionController extends Controller
     public function userList(Request $request)
     {
         $data = User::paginate($this->perPage);
-
-        $this->response['results'] = array();
-        $this->response['pagination'] = array();
-
         $this->response = UserResource::collection($data);
         return $this->sendResponse($this->response, __('Success'), Response::HTTP_OK);
     }
